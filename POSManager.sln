@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSManager.API.Products", "POSManager.API.Products\POSManager.API.Products.csproj", "{7249A561-8742-4899-B2E5-1C46959EBBBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSManager.API.Tenant", "POSManager.API.Tenant\POSManager.API.Tenant.csproj", "{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C81272F8-4D17-4DC1-8D31-0C34B8B79EAA}
+	EndGlobalSection
+EndGlobal
