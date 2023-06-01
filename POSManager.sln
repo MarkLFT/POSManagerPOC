@@ -3,9 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSManager.API.Products", "POSManager.API.Products\POSManager.API.Products.csproj", "{7249A561-8742-4899-B2E5-1C46959EBBBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POSManager.API.Products", "POSManager.API.Products\POSManager.API.Products.csproj", "{7249A561-8742-4899-B2E5-1C46959EBBBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POSManager.API.Tenant", "POSManager.API.Tenant\POSManager.API.Tenant.csproj", "{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{92065C85-7924-4943-BA0B-14AB72C33224}"
+	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POSManager.API.Invoices", "POSManager.API.Invoices\POSManager.API.Invoices.csproj", "{1C05F8F6-17BB-44D2-B6B2-3E989E7FC77E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{DCA7AE75-A42F-4B03-AA9D-02792465C7AE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Products.Tests", "Tests\API.Products.Tests\API.Products.Tests.csproj", "{9C3AD383-F001-4443-9606-26A323DD396C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API.Invoices.Tests", "Tests\API.Invoices.Tests\API.Invoices.Tests.csproj", "{74E13054-144E-4FE9-8DA8-4C776D4CEC1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "POSManager.Identity", "POSManager.Identity\POSManager.Identity.csproj", "{AC315E37-3A5E-44B6-9C15-317B9893043D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B7EA4BDD-16B6-416D-80C2-AF95DF47157A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,13 +36,29 @@ Global
 		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7249A561-8742-4899-B2E5-1C46959EBBBA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9DFA4CBB-DB25-4BE1-808C-24280A1E167E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C05F8F6-17BB-44D2-B6B2-3E989E7FC77E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C05F8F6-17BB-44D2-B6B2-3E989E7FC77E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C05F8F6-17BB-44D2-B6B2-3E989E7FC77E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C05F8F6-17BB-44D2-B6B2-3E989E7FC77E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3AD383-F001-4443-9606-26A323DD396C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3AD383-F001-4443-9606-26A323DD396C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3AD383-F001-4443-9606-26A323DD396C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3AD383-F001-4443-9606-26A323DD396C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74E13054-144E-4FE9-8DA8-4C776D4CEC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74E13054-144E-4FE9-8DA8-4C776D4CEC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74E13054-144E-4FE9-8DA8-4C776D4CEC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74E13054-144E-4FE9-8DA8-4C776D4CEC1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC315E37-3A5E-44B6-9C15-317B9893043D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC315E37-3A5E-44B6-9C15-317B9893043D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC315E37-3A5E-44B6-9C15-317B9893043D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC315E37-3A5E-44B6-9C15-317B9893043D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9C3AD383-F001-4443-9606-26A323DD396C} = {DCA7AE75-A42F-4B03-AA9D-02792465C7AE}
+		{74E13054-144E-4FE9-8DA8-4C776D4CEC1C} = {DCA7AE75-A42F-4B03-AA9D-02792465C7AE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C81272F8-4D17-4DC1-8D31-0C34B8B79EAA}
