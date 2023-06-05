@@ -1,4 +1,4 @@
-﻿using NubeSync.Client.SQLiteStore;
+﻿using NubeSync.Client.SQLiteStoreEFCore;
 using NubeSync.Client;
 using API.Invoices.Tests.Models;
 
@@ -6,33 +6,24 @@ namespace API.Invoices.Tests;
 public class IntegrationTest : IClassFixture<IntegrationTestServerFixture>
 {
     private readonly IntegrationTestServerFixture _integrationTestServerFixture;
-    private NubeSQLiteDataStore _dataStoreDemo;
-    private NubeClient _nubeClientDemo;
+    private readonly NubeSQLiteDataStoreEFCore _dataStoreDemo;
+    private readonly NubeClient _nubeClientDemo;
     private IOrderedEnumerable<Invoice> _list;
 
     public IntegrationTest(IntegrationTestServerFixture integrationTestServerFixture)
     {
         _integrationTestServerFixture = integrationTestServerFixture;
 
-        // this is needed when the server is running local for debugging
-        //var clientHandler = new HttpClientHandler
-        //{
-        //    ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; }
-        //};
-        //var httpClient = new HttpClient(clientHandler);
-
         var server = "https://localhost:7002/";
 
         #region Demo client
 
-        var databasePathDemo = Path.Combine(AppContext.BaseDirectory, "offlineDemo.db");
-        _dataStoreDemo = new NubeSQLiteDataStore(databasePathDemo);
+        var databasePathDemo = ":memory:";
+        _dataStoreDemo = new NubeSQLiteDataStoreEFCore(databasePathDemo);
 
-        _nubeClientDemo = new NubeClient(_dataStoreDemo, server, httpClient: _integrationTestServerFixture.HttpClientDemo);
-        
+        _nubeClientDemo = new NubeClient(_dataStoreDemo, server, httpClient: _integrationTestServerFixture.HttpClientDemo, operationsUrl: "/api/operations");
+
         #endregion Demo Client
-
-
     }
 
     [Fact]
@@ -54,7 +45,7 @@ public class IntegrationTest : IClassFixture<IntegrationTestServerFixture>
 
         await _nubeClientDemo.SaveAsync(invoice);
 
-        await SyncAsync(_nubeClientDemo);
+        await SyncAsync();
 
         var demoServerInvoices = await GetInvoicesAsync(_integrationTestServerFixture.HttpClientDemo);
 
@@ -65,17 +56,17 @@ public class IntegrationTest : IClassFixture<IntegrationTestServerFixture>
 
     }
 
-    private async Task RefreshItemsAsync(NubeClient nubeClient)
+    private async Task RefreshItemsAsync()
     {
-        _list = (await nubeClient.GetAllAsync<Invoice>()).ToList().OrderBy(i => i.CreatedAt);
+        _list = (await _nubeClientDemo.GetAllAsync<Invoice>()).ToList().OrderBy(i => i.CreatedAt);
     }
 
-    private async Task SyncAsync(NubeClient nubeClient)
+    private async Task SyncAsync()
     {
-        await nubeClient.PushChangesAsync();
-        await nubeClient.PullTableAsync<Invoice>();
+        await _nubeClientDemo.PushChangesAsync();
+        await _nubeClientDemo.PullTableAsync<Invoice>();
 
-        await RefreshItemsAsync(nubeClient);
+        await RefreshItemsAsync();
     }
 
     private async Task<IEnumerable<POSManager.API.Invoices.Models.Invoice>> GetInvoicesAsync(HttpClient client)
@@ -87,9 +78,8 @@ public class IntegrationTest : IClassFixture<IntegrationTestServerFixture>
     {
         await _dataStoreDemo.InitializeAsync();
 
-        await _nubeClientDemo.AddTableAsync<InvoiceItem>("invoiceitem");
-        await _nubeClientDemo.AddTableAsync<Invoice>("invoice");
+        await _nubeClientDemo.AddTableAsync<Invoice>("/api/invoice");
 
-        await RefreshItemsAsync(_nubeClientDemo);
+        await RefreshItemsAsync();
     }
 }

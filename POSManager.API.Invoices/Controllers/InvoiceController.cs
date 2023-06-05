@@ -6,7 +6,7 @@ using POSManager.API.Invoices.Models;
 
 namespace POSManager.API.Invoices.Controllers;
 
-[Route("[controller]")]
+[Route("api/[controller]")]
 [ApiController]
 [Authorize]
 public class InvoiceController : ControllerBase
